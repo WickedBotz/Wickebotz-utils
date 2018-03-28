@@ -102,7 +102,7 @@ button {
    transition: .3s ease-in-out;
    min-width: 50px;
    width: 70%;
-   border-radius: 1000px;
+   border-radius: 1000px; 
    position: absolute;
 }
 
