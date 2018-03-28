@@ -46,12 +46,15 @@
    /**
     * 
     * WINDOW ONLOAD FUNCTIONS
-    * 
+    * +
     */ 
    window.onload = () => {
 
       // Add input bottom border events for all inputs actives
       addInputEvent();
+
+      // Init last form saved
+      initForm();
 
       // Add an event for addInput button to add new input for item name and item quantity to the form
       document.querySelector('#addInput').onclick = () => {
@@ -166,6 +169,12 @@
       });
 
       return formObjects;
+
+   }
+
+   function initForm() {
+
+      form.appendChild(inputLabelTemplate(`nomeItem${idCounter}`, `id${idCounter}`, '', 'Nome do item'));
 
    }
 
