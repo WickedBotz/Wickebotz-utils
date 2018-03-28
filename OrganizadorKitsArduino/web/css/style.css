@@ -103,6 +103,7 @@ button {
    min-width: 50px;
    width: 70%;
    border-radius: 1000px;
+   position: absolute;
 }
 
 .input-border-focus {
