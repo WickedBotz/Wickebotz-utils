@@ -1,0 +1,296 @@
+
+
+/* ------- */
+/* GENERIC */
+/* ------- */
+
+
+* {
+   box-sizing: border-box;
+}
+
+.container, html, body {
+   width: 100%;
+   height: 100%;
+   font-family: Arial, Helvetica, sans-serif;
+   margin: 0;
+   padding: 0;
+}
+
+html {
+   background-color: #942536; /*#B81021*/
+}
+
+.wickedbotz-bg:before,
+.modal {
+   left: 0;
+   padding: 0;
+   width: 100%;
+   height: 100%;
+}
+
+.modal-container,
+#form > h1,
+.modal-container,
+.modal-head {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+}
+
+button {
+   border: none;
+   outline: none;
+   background: none;
+   font-weight: bold;
+}
+
+
+/* ----- */
+/* FORMS */
+/* ----- */
+
+
+#form {
+   background: #FFF;
+   width: 100%;
+   float: left;
+}
+
+/* FORM HEADER */
+
+#form > h1 {
+   padding: 1ch;
+   text-align: center;
+}
+
+.header-border {
+   height: 4px;
+   background: #942536;
+   width: 30%;
+   max-width: 200px;
+}
+
+/* FORM CONTAINER */
+
+.form-container {
+   padding: 5ch;
+   margin-top: -100px;
+}
+
+/* FORM ELEMENTS */
+
+.input-box {
+   width: 33.333332%;
+   float: left;
+   position: relative;
+}
+
+.input-box > div {
+   padding: 3ch 2ch;
+}
+
+.custom-label {
+   font-size: 60%;
+   color: #888;
+}
+
+.input-border {
+   height: 1px;
+   background-color: #942536;
+   transition: .3s ease-in-out;
+   min-width: 50px;
+   width: 70%;
+   border-radius: 1000px;
+}
+
+.input-border-focus {
+   height: 3px;
+   transition: .3s ease-in-out;
+}
+
+.custom-input {
+   outline: none;
+   border: none;
+   position: relative;
+   width: 100%;
+   background: none;
+   padding-top: 1ch;
+   transition: .3s ease-in-out;
+   width: 70%;
+   padding-left: 10px;
+   border-radius: 2px 2px 0 0;
+}
+
+/* BUTTONS */
+
+.bt-wrapper {
+   width: 100%;
+   float: left;
+   background: rgba(30, 16, 16, 0.306);
+   padding: 1ch;   
+}
+
+.bt-container {
+   float: left;
+   width: 100%;
+   padding: 1ch 0;
+}
+
+.bt {
+   background: red;
+   color: #FFF;
+   padding: 1ch 3ch;
+   transition: .3s ease-in-out;
+   border-radius: 2px;
+}
+
+.bt:hover {
+   background: rgb(198, 0, 0);
+   transition: .3s ease-in-out;
+}
+
+.bt-modal {
+   background: #008b4c;
+}
+
+.bt-modal:hover {
+   background: #00693a;
+}
+
+
+/* -------------------- */
+/* WICKEDBOTZ HEADER BG */
+/* -------------------- */
+
+
+.wickedbotz-bg {
+   position: relative;
+   width: 100%;
+   height: 50vh;
+   max-height: 300px;
+   background-image: url('../img/wicked.png');
+   background-attachment: fixed;
+   background-size: 100% 300px;
+   z-index: -10;
+}
+
+.wickedbotz-bg:before {
+   content: '';
+   position: absolute;
+   background: radial-gradient(rgba(30, 16, 16, 0.306) 0%, rgba(40, 26, 26, .9) 100%);
+}
+
+
+/* ------ */
+/* MODALS */
+/* ------ */
+
+
+.modal {
+   position: fixed;
+   z-index: 10;
+   background: rgba(30, 16, 16, 0.606);
+   display: block;
+}
+
+.modal-hide {
+   display: none;
+}
+
+.modal-head {
+   padding: 1ch;
+   height: 80px;
+   background: brown;
+   text-align: center;
+   color: #FFF;
+   position: relative;
+}
+
+.modal-head > h3 {
+   margin: 0;
+}
+
+.modal-body {
+   padding: 1ch;
+   max-height: calc(100% - 80px);
+   overflow-y: auto;
+   display: flex;
+   justify-content: center;
+}
+
+.modal-container {
+   width: 100%;
+   height: 100%;
+}
+
+.modal-wrapper {
+   width: 80%;
+   height: 70%;
+   background: #FFF;
+}
+
+.modal-body table thead th,
+.modal-body table tbody td {
+   padding: 1ch;
+   text-align: center;
+}
+
+.modal-body table thead th {
+   background-color: brown;
+   color: #FFF;
+}
+
+.modal-body table tbody td {
+   background-color: rgb(208, 152, 152);
+}
+
+.modal-close-bt {
+   position: absolute;
+   top: 0;
+   right: 0;
+   padding: 1ch;
+   margin: 0;
+   color: #FFF;
+   cursor: pointer;
+}
+
+.modal-close-bt:hover {
+   background: rgba(255, 255, 255, .1);
+}
+
+
+/* ------------- */
+/* MEDAI QUERIES */
+/* ------------- */
+
+
+@media all and (max-width: 768px) {
+
+   .input-box,
+   .custom-input,
+   .input-border,
+   .bt,
+   .header-border {
+      width: 100%;
+      max-width: none;
+   }
+
+   .bt {
+      margin: 1px 0 1px 0;
+   }
+
+   .form-container {
+      padding: 1ch;
+   }
+
+   .bt-wrapper {
+      padding: 0;
+   }
+
+   #form > h1 {
+      font-size: 150%;
+   }
+
+}

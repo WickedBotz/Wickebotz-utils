@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Kit Arduino - Organizer helper</title>
+   <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+   <div class="modal modal-hide" id="modal">
+      <div class="modal-container">
+         <div class="modal-wrapper">
+            <div class="modal-head">
+               <h3>Tabela de resultados</h3>
+               <button class="modal-close-bt" id="modalClose">X</button>
+            </div>
+            <div id="mdBody" class="modal-body">
+               <table>
+                  <thead>
+                     <tr>
+                        <th>Nome do Item</th>
+                        <th>Quant.</th>
+                        <th>Quant. p/ kit</th>
+                     </tr>
+                  </thead>
+                  <tbody id="tbody"></tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <div class="container">
+      <div class="wickedbotz-bg"></div>
+      <div class="form-container">
+
+         <form id="form">
+            <h1>Lista de itens do kit arduino
+               <div class="header-border"></div>
+            </h1>
+         </form>
+         <div class="bt-container">
+            <div class="bt-wrapper">
+               <button class="bt" id="addInput">+</button>
+               <button class="bt bt-modal" id="openModal">View results</button>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <script src="./js/app.js"></script>
+
+</body>
+
+</html>
