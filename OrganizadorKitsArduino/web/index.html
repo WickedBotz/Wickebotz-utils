@@ -15,16 +15,26 @@
       <div class="modal-container">
          <div class="modal-wrapper">
             <div class="modal-head">
-               <h3>Tabela de resultados</h3>
                <button class="modal-close-bt" id="modalClose">X</button>
+               <h3>Tabela de resultados</h3>
             </div>
             <div id="mdBody" class="modal-body">
+               <div class="input-box">
+                  <div>
+                     <label class="custom-label" for="tkit">Total de kits</label>
+                     <div class="input-wrapper">
+                        <input type="number" class="custom-input" name="tkit" id="tkit" value="1" min="1">
+                        <div class="input-border"></div>
+                     </div>
+                  </div>
+               </div>
                <table>
                   <thead>
                      <tr>
                         <th>Nome do Item</th>
                         <th>Quant.</th>
-                        <th>Quant. p/ kit</th>
+                        <th>Quant. p/ kit </th>
+                        <th>Quant. p/ kit limpo</th>
                      </tr>
                   </thead>
                   <tbody id="tbody"></tbody>
@@ -37,7 +47,6 @@
    <div class="container">
       <div class="wickedbotz-bg"></div>
       <div class="form-container">
-
          <form id="form">
             <h1>Lista de itens do kit arduino
                <div class="header-border"></div>

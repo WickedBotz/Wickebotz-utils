@@ -216,9 +216,15 @@ button {
 .modal-body {
    padding: 1ch;
    max-height: calc(100% - 80px);
+   height: 100%;
    overflow-y: auto;
    display: flex;
-   justify-content: center;
+   
+   flex-direction: column;
+}
+
+.modal-body .input-box > div {
+   padding: 1ch;
 }
 
 .modal-container {
