@@ -4,6 +4,13 @@
    var idCounter = 0;
    var scrollCounter = 0;
    var scrollInterval;
+   var $ = document.querySelector.bind(document);
+   var $$ = document.querySelectorAll.bind(document);
+
+
+
+
+
 
    /**
    * 
@@ -15,7 +22,7 @@
    *  label - Label for the input - NO PLACEHOLDERS
    * 
    */
-   function inputLabelTemplate(name, id, value, label) {
+   function inputLabelTemplate(name, id, valueName, valueQuant, label) {
 
       let div = document.createElement('div');
 
@@ -25,13 +32,13 @@
                
                <label class="custom-label" for=${id}>${label}</label>
                <div class="input-wrapper">
-                  <input class="custom-input" name=${name} id=${id} value=${value}>
+                  <input class="custom-input" name=${name} id=${id} value=${valueName}>
                   <div class="input-border"></div>
                </div>
    
                <label class="custom-label" for="${id}-quant">quantidade</label>
                <div class="input-wrapper">
-                  <input type="number" class="custom-input" name="${name}-quant" id="${id}-quant">
+                  <input type="number" min="1" class="custom-input" name="${name}-quant" id="${id}-quant" value="${valueQuant}">
                   <div class="input-border"></div>
                </div>
    
@@ -43,23 +50,34 @@
 
    }
 
+
+
+
+
+
+
+
    /**
     * 
     * WINDOW ONLOAD FUNCTIONS
     * +
     */ 
-   window.onload = () => {
+   window.addEventListener('load', () => {
+
+
 
       // Add input bottom border events for all inputs actives
       addInputEvent();
-
       // Init last form saved
       initForm();
 
-      // Add an event for addInput button to add new input for item name and item quantity to the form
-      document.querySelector('#addInput').onclick = () => {
 
-         form.appendChild(inputLabelTemplate(`nomeItem${idCounter}`, `id${idCounter}`, '', 'Nome do item'));
+
+
+      // Add an event for addInput button to add new input for item name and item quantity to the form
+      $('#addInput').addEventListener('click', () => {
+
+         form.appendChild(inputLabelTemplate(`nomeItem${idCounter}`, `id${idCounter}`, '', '', 'Nome do item'));
 
          addInputEvent();
 
@@ -69,16 +87,45 @@
 
          idCounter++;
 
-      };
+      });
 
+
+
+      
+      // Save all form objects to localStorage - formObjects
+      $('#saveInput').addEventListener('click', () => {
+
+         let formObjects = getFormObjects();
+
+         if (formObjects != "" && formObjects) {
+
+            localStorage.setItem('formObjects', JSON.stringify(formObjects));
+            alert('Dados salvos com sucesso!');
+
+         } else {
+
+            alert('Formulário vazio!');
+
+         }
+
+      });
+
+      $('#clearInput').addEventListener('click', () => {
+
+         $('#form').innerHTML = '<h1>Lista de itens do kit arduino<div class="header-border"></div></h1>';
+         localStorage.setItem('formObjects', '');
+
+      });
+
+      
       // Add an event to modalClose button that add modal-hide class to hide the modal
-      document.querySelectorAll('#modalClose, #modal').forEach(el => {
+      $$('#modalClose, #modal').forEach(el => {
 
          el.addEventListener('click', ev => {
 
             if (ev.target.classList.contains('modal-container') || ev.target.id == 'modalClose') {
 
-               document.querySelector('#modal').classList.add('modal-hide');
+               $('#modal').classList.add('modal-hide');
 
             }
 
@@ -86,16 +133,22 @@
 
       });
 
-      // Add an event to openModal button that remove modal-hide class to show the modal
-      document.querySelector('#openModal').addEventListener('click', () => {
 
-         document.querySelector('#modal').classList.remove('modal-hide');
+
+      
+      // Add an event to openModal button that remove modal-hide class to show the modal
+      $('#openModal').addEventListener('click', () => {
+
+         $('#modal').classList.remove('modal-hide');
          updateTableInfo();
 
       });
 
+
+
+      
       // Add an event on tkit button to update result table info when total kit is changed
-      document.querySelector('#tkit').addEventListener('keyup', ev => {
+      $('#tkit').addEventListener('keyup', ev => {
 
          if (ev.target.value && ev.target.value > 0) {
             updateTableInfo();
@@ -103,12 +156,18 @@
 
       });
 
-   };
 
+      
+
+   });
+
+
+
+      
    // Add input event for input buttom border to all inputs
    function addInputEvent() {
 
-      document.querySelectorAll('input').forEach(inp => {
+      $$('input').forEach(inp => {
 
          inp.addEventListener('focus', () => {
             inp.nextElementSibling.classList.add('input-border-focus');
@@ -122,6 +181,9 @@
 
    }
 
+
+
+      
    // Do a gradual scroll
    function gradualScroll() {
 
@@ -135,13 +197,16 @@
 
    }
 
+
+      
+
    // Update table info
    function updateTableInfo() {
 
-      let tbody = document.querySelector('#tbody');
+      let tbody = $('#tbody');
       let formObjects = getFormObjects();
 
-      let totalKit = Number(document.querySelector('#tkit').value);
+      let totalKit = Number($('#tkit').value);
 
       tbody.innerHTML = formObjects.map(obj => `
          <tr>
@@ -154,12 +219,15 @@
 
    }
 
+
+
+      
    // Get all inputs on the form and get all your values like name and quantity
    function getFormObjects() {
 
       let formObjects = [];
 
-      document.querySelectorAll('#form .input-box').forEach(el => {
+      $$('#form .input-box').forEach(el => {
 
          formObjects.push({
             name: el.querySelectorAll('input')[0].value,
@@ -172,10 +240,27 @@
 
    }
 
+
+
+   // Init form if is something saved on localStorage
    function initForm() {
 
-      form.appendChild(inputLabelTemplate(`nomeItem${idCounter}`, `id${idCounter}`, '', 'Nome do item'));
+      let formObjects = localStorage.getItem('formObjects');
+
+      if (formObjects != "" && formObjects) {
+
+         formObjects = JSON.parse(formObjects);
+
+         formObjects.forEach(obj => {
+            form.appendChild(inputLabelTemplate(`${obj.name}${idCounter}`, `id${idCounter}`, obj.name, obj.quant, 'Nome do item'));
+            idCounter++;
+         });
+
+      }
 
    }
 
+
+
+      
 })();

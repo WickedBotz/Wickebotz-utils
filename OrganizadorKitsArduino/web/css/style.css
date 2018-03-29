@@ -140,7 +140,7 @@ button {
 }
 
 .bt {
-   background: red;
+   background: #ce0f2c;
    color: #FFF;
    padding: 1ch 3ch;
    transition: .3s ease-in-out;
@@ -158,6 +158,15 @@ button {
 
 .bt-modal:hover {
    background: #00693a;
+}
+
+.bt-save {
+   background: #FFF;
+   color: #000;
+}
+
+.bt-save:hover {
+   background: rgb(209, 209, 209);
 }
 
 
@@ -278,7 +287,6 @@ button {
    .input-box,
    .custom-input,
    .input-border,
-   .bt,
    .header-border {
       width: 100%;
       max-width: none;
@@ -286,6 +294,13 @@ button {
 
    .bt {
       margin: 1px 0 1px 0;
+      width: 50%;
+      float: left;
+      border-radius: 0;
+   }
+
+   .bt-save {
+      width: 100%;
    }
 
    .form-container {
