@@ -32,7 +32,7 @@
                
                <label class="custom-label" for=${id}>${label}</label>
                <div class="input-wrapper">
-                  <input class="custom-input" name=${name} id=${id} value=${valueName}>
+                  <input class="custom-input" name=${name} id=${id} value="${valueName}">
                   <div class="input-border"></div>
                </div>
    
